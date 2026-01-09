@@ -13,7 +13,7 @@ public class MainCliente {
     public static void main(String[] args) {
         // Argumentos
         if (args.length != 2) {
-            System.out.println("Uso: <host> <puerto>");
+            System.out.println("Pon en los argumentos del programa <host> <puerto>");
             return;
         }
 
