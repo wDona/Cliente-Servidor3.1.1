@@ -18,7 +18,7 @@ public class Server {
             byte[] buf = new byte[BUF_SIZE];
 
             while (true) {
-                // Preparar "sobre" de recepción
+                // Declarar "sobre" de recepcion
                 DatagramPacket p = new DatagramPacket(buf, buf.length);
 
                 // Recibir paquete
