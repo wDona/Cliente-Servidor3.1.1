@@ -29,13 +29,13 @@ public class Server {
                 clientes.add(socketAddressCliente);
 
                 // Convertir a texto y validar
-                String message = new String(p.getData(), 0, p.getLength(), StandardCharsets.UTF_8).trim();
-                if (message.isBlank()) continue;
+                String mensaje = new String(p.getData(), 0, p.getLength(), StandardCharsets.UTF_8).trim();
+                if (mensaje.isBlank()) continue;
 
                 // Crear mensaje de broadcast
                 InetSocketAddress socketAddress = (InetSocketAddress) socketAddressCliente;
-                String label = "[" + socketAddress.getAddress().getHostAddress() + ":" + socketAddress.getPort() + "]";
-                String broadcastMsg = "PUB " + label + " " + message;
+                String sender = "[" + socketAddress.getAddress().getHostAddress() + ":" + socketAddress.getPort() + "]";
+                String broadcastMsg = "PUB " + sender + " " + mensaje;
 
                 System.out.println(broadcastMsg);
 
