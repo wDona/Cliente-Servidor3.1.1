@@ -35,12 +35,12 @@ public class Server {
                 // Crear mensaje de broadcast
                 InetSocketAddress socketAddress = (InetSocketAddress) socketAddressCliente;
                 String sender = "[" + socketAddress.getAddress().getHostAddress() + ":" + socketAddress.getPort() + "]";
-                String broadcastMsg = "PUB " + sender + " " + mensaje;
+                String mensajeBroadcast = "PUB " + sender + " " + mensaje;
 
-                System.out.println(broadcastMsg);
+                System.out.println(mensajeBroadcast);
 
                 // Reenviar a todos
-                byte[] datosAEnviar = broadcastMsg.getBytes(StandardCharsets.UTF_8);
+                byte[] datosAEnviar = mensajeBroadcast.getBytes(StandardCharsets.UTF_8);
                 for (SocketAddress cliente : clientes) {
                     DatagramPacket paqueteEnviado = new DatagramPacket(
                             datosAEnviar, datosAEnviar.length, cliente

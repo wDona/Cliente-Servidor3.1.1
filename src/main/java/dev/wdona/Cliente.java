@@ -25,7 +25,7 @@ public class Cliente implements Runnable {
                 socket.receive(p);
                 String received = new String(p.getData(), 0, p.getLength(), StandardCharsets.UTF_8);
 
-                // Prefijo PUB
+                // No mostrar prefijo PUB
                 if (received.startsWith("PUB ")) {
                     System.out.println(received.substring(4));
                 } else {

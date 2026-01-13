@@ -18,27 +18,27 @@ public class MainCliente {
         }
 
         String host = args[0];
-        int port = Integer.parseInt(args[1]);
+        int puerto = Integer.parseInt(args[1]);
 
         try {
-            // Socket del servidor
-            InetSocketAddress serverAddr = new InetSocketAddress(InetAddress.getByName(host), port);
+            // Socket del server
+            InetSocketAddress serverAddr = new InetSocketAddress(InetAddress.getByName(host), puerto); // getByName para poder resolver nombres de dominio
             DatagramSocket socket = new DatagramSocket();
-            socket.setSoTimeout(1200); // 1.2s
+            socket.setSoTimeout(1200);
 
             // Iniciar hilo Cliente (Receiver)
             Thread rx = new Thread(new Cliente(socket), "udp-rx");
             rx.setDaemon(true);
             rx.start();
 
-            System.out.println("Conectado a " + host + ":" + port);
+            System.out.println("Conectado a " + host + ":" + puerto);
             System.out.println("Escribe texto para enviar o '/salir' para terminar");
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
             String line;
 
             // Envio de menasjes periodicos
-            while ((line = in.readLine()) != null) {
+            while ((line = entrada.readLine()) != null) {
                 line = line.trim();
                 if (line.isEmpty()) continue;
                 if (line.equalsIgnoreCase("/salir")) break;
